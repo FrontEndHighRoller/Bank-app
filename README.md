@@ -45,4 +45,6 @@ Advanced Javascript Project -
 2. User jd is set to English, United States, Date (mm/dd/yyyy), currency ($), currency format (.), (before the number), is set to this country
 
 
+### Flowchart
+![ALT](flowchart.png)
 
