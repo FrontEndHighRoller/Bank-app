@@ -3,7 +3,7 @@ Advanced Javascript Project -
 
 
 
-### user: Dr, PIN: 1111
+### user: To make it render the app type inside input following: User: dr, PIN: 1111
 
 ![ALT](snap1.png)
 
