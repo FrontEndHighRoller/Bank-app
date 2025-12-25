@@ -1,42 +1,49 @@
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
 }
 
 html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
-
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #444;
   background-color: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  padding: 2rem;
+  /*   padding: 2rem; */
 }
-
 nav {
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  /*   padding: 0 2rem; */
 }
-
 .welcome {
   font-size: 1.9rem;
   font-weight: 500;
 }
-
 .logo {
   height: 5.25rem;
 }
-
 .login {
   display: flex;
+  padding-left: 2.875rem;
 }
-
 .login__input {
   border: none;
   padding: 0.5rem 2rem;
@@ -50,16 +57,13 @@ nav {
   border: 1px solid #fff;
   transition: all 0.3s;
 }
-
 .login__input:focus {
   outline: none;
   border: 1px solid #ccc;
 }
-
 .login__input::placeholder {
   color: #bbb;
 }
-
 .login__btn {
   border: none;
   background: none;
@@ -68,69 +72,97 @@ nav {
   cursor: pointer;
   transition: all 0.3s;
 }
-
 .login__btn:hover,
 .login__btn:focus,
 .btn--sort:hover,
 .btn--sort:focus {
   outline: none;
   color: #777;
-}
-
-/* MAIN */
+} /* MAIN */
 .app {
   position: relative;
   max-width: 100rem;
   margin: 4rem auto;
   display: grid;
   grid-template-columns: 4fr 3fr;
-  grid-template-rows: auto repeat(3, 15rem) auto;
-  gap: 2rem;
+  grid-template-rows: auto auto repeat(3, 15rem) auto;
 
-  /* NOTE This creates the fade in/out anumation */
-  opacity: 0;
+  grid-template-areas:
+    "greeting  greeting"
+    "balance   balance"
+    "movements transfer"
+    "movements loan"
+    "movements close"
+    "summary   timer";
+
+  gap: 2rem; /* NOTE This creates the fade in/out animation */
+  display: none;
   transition: all 1s;
 }
 
+.greeting {
+  grid-area: greeting;
+  font-size: 2.5rem;
+  padding-top: 4rem;
+  font-weight: 500;
+  overflow: hidden; /* Required for typewriter effect */
+  white-space: nowrap; /* Keep text on one line */
+  border-right: 0.2em solid #444; /* Cursor effect */
+  width: 0; /* Start hidden for animation */
+  animation: typing 2s steps(20, end) forwards,
+    blink 0.7s step-end infinite alternate;
+}
+
+/* Typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Blinking cursor */
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
 .balance {
-  grid-column: 1 / span 2;
+  grid-area: balance;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   margin-bottom: 2rem;
 }
-
 .balance__label {
   font-size: 2.2rem;
   font-weight: 500;
   margin-bottom: -0.2rem;
 }
-
 .balance__date {
   font-size: 1.4rem;
   color: #888;
 }
-
 .balance__value {
   font-size: 4.5rem;
   font-weight: 400;
 }
 
-/* MOVEMENTS */
 .movements {
-  grid-row: 2 / span 3;
+  grid-area: movements;
   background-color: #fff;
   border-radius: 1rem;
   overflow: scroll;
 }
-
 .movements__row {
   padding: 2.25rem 4rem;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #eee;
 }
-
 .movements__type {
   font-size: 1.1rem;
   text-transform: uppercase;
@@ -140,57 +172,55 @@ nav {
   border-radius: 10rem;
   margin-right: 2rem;
 }
-
 .movements__date {
   font-size: 1.1rem;
   text-transform: uppercase;
   font-weight: 500;
   color: #666;
 }
-
 .movements__type--deposit {
-  background-image: linear-gradient(to top left, #39b385, #9be15d);
+  background-image: linear-gradient(
+    to top left,
+    #39b385,
+    #9be15d
+  );
 }
-
 .movements__type--withdrawal {
-  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+  background-image: linear-gradient(
+    to top left,
+    #e52a5a,
+    #ff585f
+  );
 }
-
 .movements__value {
   font-size: 1.7rem;
   margin-left: auto;
 }
 
-/* SUMMARY */
 .summary {
-  grid-row: 5 / 6;
+  grid-area: summary;
   display: flex;
   align-items: baseline;
   padding: 0 0.3rem;
   margin-top: 1rem;
 }
-
 .summary__label {
   font-size: 1.2rem;
   font-weight: 500;
   text-transform: uppercase;
   margin-right: 0.8rem;
 }
-
 .summary__value {
   font-size: 2.2rem;
   margin-right: 2.5rem;
 }
-
 .summary__value--in,
 .summary__value--interest {
   color: #66c873;
 }
-
 .summary__value--out {
   color: #f5465d;
 }
-
 .btn--sort {
   margin-left: auto;
   border: none;
@@ -200,7 +230,6 @@ nav {
   cursor: pointer;
 }
 
-/* OPERATIONS */
 .operation {
   border-radius: 1rem;
   padding: 3rem 4rem;
@@ -208,15 +237,28 @@ nav {
 }
 
 .operation--transfer {
-  background-image: linear-gradient(to top left, #ffb003, #ffcb03);
+  grid-area: transfer;
+  background-image: linear-gradient(
+    to top left,
+    #ffb003,
+    #ffcb03
+  );
 }
-
 .operation--loan {
-  background-image: linear-gradient(to top left, #39b385, #9be15d);
+  grid-area: loan;
+  background-image: linear-gradient(
+    to top left,
+    #39b385,
+    #9be15d
+  );
 }
-
 .operation--close {
-  background-image: linear-gradient(to top left, #e52a5a, #ff585f);
+  grid-area: close;
+  background-image: linear-gradient(
+    to top left,
+    #e52a5a,
+    #ff585f
+  );
 }
 
 h2 {
@@ -225,23 +267,18 @@ h2 {
   font-weight: 600;
   color: #333;
 }
-
 .form {
   display: grid;
   grid-template-columns: 2.5fr 2.5fr 1fr;
   grid-template-rows: auto auto;
   gap: 0.4rem 1rem;
-}
-
-/* Exceptions for interst */
+} /* Exceptions for interst */
 .form.form--loan {
   grid-template-columns: 2.5fr 1fr 2.5fr;
 }
 .form__label--loan {
   grid-row: 2;
-}
-/* End exceptions */
-
+} /* End exceptions */
 .form__input {
   width: 100%;
   border: none;
@@ -254,17 +291,14 @@ h2 {
   border-radius: 0.7rem;
   transition: all 0.3s;
 }
-
 .form__input:focus {
   outline: none;
   background-color: rgba(255, 255, 255, 0.6);
 }
-
 .form__label {
   font-size: 1.3rem;
   text-align: center;
 }
-
 .form__btn {
   border: none;
   border-radius: 0.7rem;
@@ -273,19 +307,154 @@ h2 {
   cursor: pointer;
   transition: all 0.3s;
 }
-
 .form__btn:focus {
   outline: none;
   background-color: rgba(255, 255, 255, 0.8);
 }
-
 .logout-timer {
   padding: 0 0.3rem;
   margin-top: 1.9rem;
   text-align: right;
   font-size: 1.25rem;
 }
-
 .timer {
+  grid-area: timer;
   font-weight: 600;
+} /* Desktop styles first */
+@media (max-width: 1200px) {
+}
+@media (max-width: 992px) {
+}
+@media (max-width: 768px) {
+}
+@media (max-width: 576px) {
+  /*   * {
+    outline: 1px solid red;
+  } */
+
+  body {
+    display: block;
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  .login__container {
+    padding-top: 2rem;
+  }
+
+  .login {
+  }
+
+  .form__btn {
+    width: 100%;
+  }
+
+  .app {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+
+    grid-template-areas:
+      "greeting"
+      "balance"
+      "timer"
+      "movements"
+      "summary"
+      "transfer"
+      "loan"
+      "close";
+
+    gap: 1.5rem;
+  }
+
+  .summary {
+    flex-direction: column-reverse;
+  }
+
+  .greeting {
+    font-size: 2rem;
+    padding-top: 1rem;
+    white-space: normal; /* allow wrapping */
+    border-right: none; /* disable cursor */
+    animation: fadeSlide 1s ease-out forwards;
+    width: auto;
+  }
+
+  .movements {
+    max-height: 30rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
+  }
+
+  .movements__row {
+    padding: 1.5rem 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .movements__type {
+    text-align: center;
+  }
+
+  .movements__value {
+    margin-left: 0;
+  }
+  .logout-timer {
+    margin-top: 0;
+    text-align: left;
+  }
+
+  .operation {
+    padding: 2rem;
+  }
+
+  .balance {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .balance__div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .balance__label {
+    order: 2;
+    padding-top: 1rem;
+    letter-spacing: 0.12em;
+    font-size: 1.8rem;
+  }
+
+  .balance__date {
+  }
+
+  .balance__value {
+    font-size: 3.2rem;
+  }
+
+  .form.form--transfer {
+    grid-template-areas:
+      "greeting"
+      "balance"
+      "timer"
+      "movements"
+      "summary"
+      "transfer"
+      "loan"
+      "close";
+  }
+
+  @keyframes fadeSlide {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
