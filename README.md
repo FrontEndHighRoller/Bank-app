@@ -14,7 +14,7 @@ Advanced Javascript Project -
 
 ### Uppon login
 
-1. The timer starts counting down 2 minutes
+1. The timer starts counting down 20 minutes 50seconds
 2. A welcome message based on your name will pop up
 3. Print the current date and time below the "Current balance" text
 
