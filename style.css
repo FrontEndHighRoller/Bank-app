@@ -8,7 +8,7 @@
 
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 html {
@@ -82,7 +82,8 @@ nav {
 .app {
   position: relative;
   max-width: 100rem;
-  margin: 4rem auto;
+  margin: 0 auto;
+  padding-top: 2rem;
   display: grid;
   grid-template-columns: 4fr 3fr;
   grid-template-rows: auto auto repeat(3, 15rem) auto;
@@ -105,30 +106,15 @@ nav {
   font-size: 2.5rem;
   padding-top: 4rem;
   font-weight: 500;
-  overflow: hidden; /* Required for typewriter effect */
-  white-space: nowrap; /* Keep text on one line */
-  border-right: 0.2em solid #444; /* Cursor effect */
-  width: 0; /* Start hidden for animation */
-  animation: typing 2s steps(20, end) forwards,
-    blink 0.7s step-end infinite alternate;
+
+  overflow: visible;
+  white-space: normal;
+  border-right: none;
+  width: auto;
+
+  animation: fadeSlide 1s steps ease-out forwards;
 }
 
-/* Typing effect */
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-/* Blinking cursor */
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-}
 
 .balance {
   grid-area: balance;
