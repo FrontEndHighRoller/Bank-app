@@ -5,17 +5,22 @@ Advanced Javascript Project -
 
 ### User: dr PIN: 1111
 
-![ALT](snap1.png)
+![ALT](./assets/snap-1.png)
 
 ### Login successful
+DESKTOP PREVIEW
 
-![ALT](snap2.png)
+![ALT](./assets/snap-2.png)
+
+MOBILE PREVIEW
+
+![ALT](./assets/snap-3.png)
 
 
 ### Uppon login
 
-1. The timer starts counting down 20 minutes 50seconds
-2. A welcome message based on your name will pop up
+1. The timer starts counting down 2 minutes
+2. A welcome message based on your name and the current time will pop up
 3. Print the current date and time below the "Current balance" text
 
 
@@ -46,5 +51,5 @@ Advanced Javascript Project -
 
 
 ### Flowchart
-![ALT](flowchart.png)
+![ALT](./assets/flowchart.png)
 

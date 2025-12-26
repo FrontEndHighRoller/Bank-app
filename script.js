@@ -185,7 +185,7 @@ const getGreeting = function () {
 // Logout Timer
 
 const startLogOutTimer = function () {
-  let time = 1250
+  let time = 120
 
   const tick = function () {
     const min = String(Math.trunc(time / 60)).padStart(2, '0')
