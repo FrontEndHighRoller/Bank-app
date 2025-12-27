@@ -1,9 +1,11 @@
 # Bank-app
-Advanced Javascript Project - 
+Advanced Javascript Project - **Only Mobile and Desktop Responsive, not Tablet**
 
 
 
-### User: dr PIN: 1111
+### HOW TO LOG IN
+User: dr 
+PIN: 1111
 
 ![ALT](./assets/snap-1.png)
 
@@ -52,4 +54,25 @@ MOBILE PREVIEW
 
 ### Flowchart
 ![ALT](./assets/flowchart.png)
+
+## ⚙️ How to Run Locally
+
+1. Clone the repository  
+   ```bash
+   git clone https://github.com/FrontEndHighRoller/Bank-app.git
+2. Open index.html in your browser
+3. Resize the screen to see responsive mobile layouts and image switching in action, **not tablet responsive yet**🎯
+
+---
+
+🙋‍♂️ Author
+Dennis Rumanek
+
+GitHub: https://github.com/FrontEndHighRoller
+
+LinkedIn: https://www.linkedin.com/in/dennis-rumanek/
+
+⭐ If you like this solution, feel free to star the repository!
+
+
 
